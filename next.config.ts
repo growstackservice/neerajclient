@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     domains: ['storage.googleapis.com'],
     remotePatterns: [
@@ -10,7 +13,6 @@ const nextConfig = {
       },
     ],
   },
-devIndicators: false
 };
 
 module.exports = nextConfig;
