@@ -24,56 +24,56 @@ const PromiseSection = () => {
   ];
 
   return (
-    <section className="max-w-6xl mx-auto px-6 py-6 bg-white bottom-0">
-      <div className="text-center mb-12">
-        <span className="text-[#6433F6] text-[12px] font-semibold uppercase tracking-widest bg-white px-5 py-1 rounded-full inline-block mb-6 shadow-md border border-gray-200">
+    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16 bg-white">
+      <div className="text-center mb-8 sm:mb-12 lg:mb-16">
+        <span className="text-[#6433F6] text-xs sm:text-sm font-semibold uppercase tracking-widest bg-white px-4 sm:px-5 py-1 sm:py-2 rounded-full inline-block mb-4 sm:mb-6 shadow-md border border-gray-200">
           The Promise
         </span>
 
-            <h2 className="font-bold text-4xl md:text-4xl leading-tight mb-4 text-gray-900 tracking-normal">
-              Lead from Your Core.{' '}
-              <span className="bg-gradient-to-b from-[#2A0A89] via-[#2A0A89] to-[#CDBCFF] bg-clip-text text-transparent">
-                Inner Field of Living Intelligence.
-              </span>
-            </h2>
+        <h2 className="font-bold text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 sm:mb-6 text-gray-900 tracking-normal px-2 sm:px-0">
+          Lead from Your Core.{' '}
+          <span className="bg-gradient-to-b from-[#2A0A89] via-[#2A0A89] to-[#CDBCFF] bg-clip-text text-transparent">
+            Inner Field of Living Intelligence.
+          </span>
+        </h2>
 
-        <p className="text-lg text-[#202020] font-normal">
+        <p className="text-base sm:text-lg lg:text-xl text-[#202020] font-normal px-4 sm:px-0 max-w-3xl mx-auto">
           Through bespoke{' '}
           <span className="font-semibold">one-on-one</span> and team coaching, Neerja helps you
         </p>
       </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 font-dm-sans mt-2 -translate-x-4 ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10 font-dm-sans">
         {cards.map((card, index) => (
           <div
             key={index}
-        className="bg-[#FFFFFF] rounded-[32px] p-3 border border-[#fbf9fb] shadow-[0_12px_20px_rgba(0,0,0,0.10)] transition duration-300 ease-in-out hover:shadow-[0_16px_64px_rgba(0,0,0,0.2)]"  >
-              
-                {/* Image */}
-          <div className="rounded-[24px] p-0 w-[320px] h-[280px] bg-[radial-gradient(ellipse_at_top_left,_#FFFFFF_10%,_#EDE7FF_80%)] shadow-sm flex items-center justify-center">
-
+            className="bg-[#FFFFFF] rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-[#fbf9fb] shadow-[0_12px_20px_rgba(0,0,0,0.10)] transition duration-300 ease-in-out hover:shadow-[0_16px_64px_rgba(0,0,0,0.2)] transform hover:-translate-y-1"
+          >
+            
+            {/* Image */}
+            <div className="rounded-xl sm:rounded-2xl p-0 w-full h-48 sm:h-56 md:h-64 lg:h-72 bg-[radial-gradient(ellipse_at_top_left,_#FFFFFF_10%,_#EDE7FF_80%)] shadow-sm flex items-center justify-center mb-4 sm:mb-6">
               <img
                 src={card.image} 
                 alt={card.imageAlt}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl sm:rounded-2xl"
               />
             </div>
 
             {/* Text Content */}
-            <div className="text-left font-dm-sans pt-2 pl-1">
-              <h3 className="text-lg font-semibold text-[#1B1B1B] mb-2 leading-tight  tracking-tighter">
+            <div className="text-left font-dm-sans">
+              <h3 className="text-base sm:text-lg lg:text-xl font-semibold text-[#1B1B1B] mb-2 sm:mb-3 leading-tight tracking-tight">
                 <span className="bg-gradient-to-b from-[#2A0A89] via-[#2A0A89] to-[#CDBCFF] text-transparent bg-clip-text font-semibold">
                   {card.title}
                 </span>{' '}
                 {card.subtitle}
               </h3>
-              <p className="text-base text-[#333333] leading-normal max-w-[280px] tracking-tighter">
+              <p className="text-sm sm:text-base lg:text-lg text-[#333333] leading-relaxed tracking-tight">
                 {card.description}
               </p>
             </div>
           </div>
         ))}
-    </div>
+      </div>
     </section>
   );
 };

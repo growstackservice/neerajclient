@@ -39,12 +39,12 @@ export default function ContactForm() {
  
   return (
     <> 
-      <div className="bg-white flex justify-center items-center min-h-screen p-4 font-dm-sans" >
-        <main className="flex flex-col md:flex-row gap-12 max-w-6xl w-full">
-          <section className="bg-gradient-to-r from-[#F6F3FF] via-[#F9F7FF] to-[#F3F0FF] rounded-2xl p-10 md:p-14 flex-1 max-w-lg">
-            <h2 className="text-center text-3xl md:text-3xl font-semibold mb-4 leading-tight">
+      <div className="bg-white flex justify-center items-center min-h-[80vh] sm:min-h-screen p-4 font-dm-sans" >
+        <main className="flex flex-col md:flex-row gap-8 sm:gap-12 max-w-6xl w-full">
+          <section className="bg-gradient-to-r from-[#F6F3FF] via-[#F9F7FF] to-[#F3F0FF] rounded-2xl p-6 sm:p-10 md:p-14 flex-1 max-w-lg">
+            <h2 className="text-center text-2xl sm:text-3xl md:text-3xl font-semibold mb-4 leading-tight">
               Get in
-              <span className="text-[#6433F6] text-3xl"> touch </span>
+              <span className="text-[#6433F6] text-2xl sm:text-3xl"> touch </span>
               today
             </h2>
 
@@ -111,7 +111,7 @@ export default function ContactForm() {
 
               <button
                 type="submit"
-                className="w-full bg-[#6433F6] hover:bg-purple-700 text-white text-base font-semibold rounded-full px-4 py-3 transition-colors "
+                className="w-full bg-[#6433F6] hover:bg-purple-700 text-white text-sm sm:text-base font-semibold rounded-full px-4 py-3 transition-colors "
               >
                 Send message
               </button>
@@ -119,17 +119,17 @@ export default function ContactForm() {
           </section>
 
           <section className="flex flex-col justify-center max-w-lg">
-            <button className="inline-block text-[12px] font-bold text-[#6433F6] bg-white rounded-full px-5 py-1 mb-4 shadow-[0_1px_3px_rgba(0,0,0,0.1)] w-fit border border-purple-100 hover:bg-purple-50 transition-colors">
+            <button className="inline-block text-[10px] sm:text-[12px] font-bold text-[#6433F6] bg-white rounded-full px-3 sm:px-5 py-1 mb-3 sm:mb-4 shadow-[0_1px_3px_rgba(0,0,0,0.1)] w-fit border border-purple-100 hover:bg-purple-50 transition-colors">
               CONTACT US
             </button>
 
-            <h3 className="text-2xl text-[#000000] font-semibold mb-5 leading-normal tracking-normal">
+            <h3 className="text-xl sm:text-2xl text-[#000000] font-semibold mb-4 sm:mb-5 leading-normal tracking-normal">
               Ready to transform your leadership journey?
               <span className="bg-gradient-to-b from-[#2A0A89] via-[#2A0A89] to-[#CDBCFF] bg-clip-text text-transparent font-normal p-2">
-                We’d love to hear from you.
+                We'd love to hear from you.
               </span>
             </h3>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               <button
                 onClick={handleLinkedInClick}
                 className="w-6 h-6 flex justify-center items-center rounded border bg-purple-100 text-[#6433F6] text-xs sm:text-sm transition"

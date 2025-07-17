@@ -13,17 +13,20 @@ const HeaderHeroWrapper = () => {
             src="/images/hero-background.jpg"
             alt="Abstract purple geometric background"
             className="w-full h-full object-cover opacity-80"
+            loading="eager"
           />
         </div>
 
         {/* Fade to white at bottom */}
-        <div className="absolute bottom-0 w-full h-40 bg-gradient-to-b from-transparent to-white" />
+        <div className="absolute bottom-0 w-full h-20 sm:h-32 md:h-40 bg-gradient-to-b from-transparent to-white" />
       </div>
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col min-h-screen">
         <Header />
-        <HeroSection />
+        <div className="flex-1 flex items-center justify-center">
+          <HeroSection />
+        </div>
       </div>
     </div>
   );

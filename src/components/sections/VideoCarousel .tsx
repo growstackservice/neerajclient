@@ -63,96 +63,158 @@ const VideoCarousel: React.FC = () => {
       </div>
 
       <div className="relative max-w-8xl mx-auto px-4">
-        <div className="relative overflow-hidden ">
-          <div className="flex items-stretch justify-center relative w-full h-full min-h-[520px]">
-
-            {/* Previous Video */}
-            <div className="w-[550px] h-full flex-shrink-0 opacity-60 transform -translate-x-15 flex flex-col justify-center">
-              <h2 className="text-xl font-normal text-gray-500 mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                {videos[getPrevIndex()].title}
-              </h2>
-              <div className="relative w-full h-72 rounded-xl overflow-hidden bg-gray-100 border-8 border-white shadow-2xl">
-                <iframe
-                  src={getYouTubeEmbedUrl(videos[getPrevIndex()].id)}
-                  className="w-full h-full rounded-xl"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                ></iframe>
-              </div>
-              <div className="mt-6 text-center px-2">
-                <p className="text-sm font-semibold text-[#000000] mb-3">
-                  {videos[getPrevIndex()].quote}
-                </p>
-                <p className="text-xs text-[#000000] leading-6">
-                  {videos[getPrevIndex()].description}
-                </p>
-              </div>
+        {/* Mobile Layout - Single Video */}
+        <div className="block lg:hidden">
+          <div className="relative w-full max-w-2xl mx-auto">
+            <h2 className="text-lg sm:text-xl font-semibold text-black mb-4 text-center px-2">
+              {videos[currentSlide].title}
+            </h2>
+            <div className="relative w-full h-48 sm:h-64 rounded-xl border-2 border-gray-100 shadow-xl">
+              <iframe
+                src={getYouTubeEmbedUrl(videos[currentSlide].id)}
+                className="w-full h-full rounded-xl"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
             </div>
+            
+            {/* Mobile Navigation buttons */}
+            <button
+              onClick={prevSlide}
+              className="absolute top-1/2 left-2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border-2 border-gray-300 shadow-lg hover:bg-gray-50 hover:border-gray-400 active:bg-gray-100 flex items-center justify-center z-50 transition-all duration-200 cursor-pointer"
+              aria-label="Previous video"
+              type="button"
+            >
+              <ChevronLeft className="w-5 h-5 text-gray-700" />
+            </button>
 
-            {/* Center Video */}
-            <div className="w-[600px] flex-shrink-0 relative mx-4 z-20 h-full flex flex-col justify-center">
-              <h2 className="text-xl font-semibold text-black mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                {videos[currentSlide].title}
-              </h2>
-              <div className="relative w-full h-72 rounded-xl border-2 border-gray-100 shadow-xl">
-                <div className="p-2 w-full h-full bg-gray-100 rounded-xl">
+            <button
+              onClick={nextSlide}
+              className="absolute top-1/2 right-2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border-2 border-gray-300 shadow-lg hover:bg-gray-50 hover:border-gray-400 active:bg-gray-100 flex items-center justify-center z-50 transition-all duration-200 cursor-pointer"
+              aria-label="Next video"
+              type="button"
+            >
+              <ChevronRight className="w-5 h-5 text-gray-700" />
+            </button>
+            
+            <div className="mt-4 text-center px-2">
+              <p className="text-sm font-semibold text-[#000000] mb-2">
+                {videos[currentSlide].quote}
+              </p>
+              <p className="text-xs text-[#000000] leading-relaxed">
+                {videos[currentSlide].description}
+              </p>
+            </div>
+          </div>
+          
+          {/* Mobile Slide indicators */}
+          <div className="flex justify-center mt-4 space-x-2">
+            {videos.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                  index === currentSlide ? 'bg-[#6433F6]' : 'bg-gray-300'
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop Layout - Three Videos */}
+        <div className="hidden lg:block">
+          <div className="relative overflow-hidden">
+            <div className="flex items-stretch justify-center relative w-full h-full min-h-[520px]">
+
+              {/* Previous Video */}
+              <div className="w-[550px] h-full flex-shrink-0 opacity-60 transform -translate-x-15 flex flex-col justify-center">
+                <h2 className="text-xl font-normal text-gray-500 mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                  {videos[getPrevIndex()].title}
+                </h2>
+                <div className="relative w-full h-72 rounded-xl overflow-hidden bg-gray-100 border-8 border-white shadow-2xl">
                   <iframe
-                    src={getYouTubeEmbedUrl(videos[currentSlide].id)}
+                    src={getYouTubeEmbedUrl(videos[getPrevIndex()].id)}
                     className="w-full h-full rounded-xl"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                   ></iframe>
-
-                  {/* Navigation buttons */}
-                  <button
-                    onClick={prevSlide}
-                    className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-400 shadow-md hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center z-30 transition-all duration-200"
-                  >
-                    <ChevronLeft className="w-4 h-4 text-gray-700" />
-                  </button>
-
-                  <button
-                    onClick={nextSlide}
-                    className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-400 shadow-md hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center z-30 transition-all duration-200"
-                  >
-                    <ChevronRight className="w-4 h-4 text-gray-700" />
-                  </button>
                 </div>
-              </div>
-              <div className="mt-6 px-4">
-                <div className="max-w-2xl mx-auto text-center">
-                  <p className="text-sm font-semibold text-[#000000] mb-4 leading-relaxed">
-                    {videos[currentSlide].quote}
+                <div className="mt-6 text-center px-2">
+                  <p className="text-sm font-semibold text-[#000000] mb-3">
+                    {videos[getPrevIndex()].quote}
                   </p>
                   <p className="text-xs text-[#000000] leading-6">
-                    {videos[currentSlide].description}
+                    {videos[getPrevIndex()].description}
                   </p>
                 </div>
               </div>
-            </div>
 
-            {/* Next Video */}
-            <div className="w-[550px] h-full flex-shrink-0 opacity-60 transform translate-x-15 flex flex-col justify-center">
-              <h2 className="text-xl font-normal text-gray-500 mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
-                {videos[getNextIndex()].title}
-              </h2>
-              <div className="relative w-full h-72 rounded-xl overflow-hidden border-2 border-gray-100 shadow-xl">
-                <div className="p-2 w-full h-full bg-gray-100 rounded-xl">
-                  <iframe
-                    src={getYouTubeEmbedUrl(videos[getNextIndex()].id)}
-                    className="w-full h-full rounded-xl"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                  ></iframe>
+              {/* Center Video */}
+              <div className="w-[600px] flex-shrink-0 relative mx-4 z-20 h-full flex flex-col justify-center">
+                <h2 className="text-xl font-semibold text-black mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                  {videos[currentSlide].title}
+                </h2>
+                <div className="relative w-full h-72 rounded-xl border-2 border-gray-100 shadow-xl">
+                  <div className="p-2 w-full h-full bg-gray-100 rounded-xl">
+                    <iframe
+                      src={getYouTubeEmbedUrl(videos[currentSlide].id)}
+                      className="w-full h-full rounded-xl"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+
+                    {/* Desktop Navigation buttons */}
+                    <button
+                      onClick={prevSlide}
+                      className="absolute top-1/2 left-0 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-400 shadow-md hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center z-30 transition-all duration-200"
+                    >
+                      <ChevronLeft className="w-4 h-4 text-gray-700" />
+                    </button>
+
+                    <button
+                      onClick={nextSlide}
+                      className="absolute top-1/2 right-0 translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-400 shadow-md hover:bg-gray-100 active:bg-gray-200 flex items-center justify-center z-30 transition-all duration-200"
+                    >
+                      <ChevronRight className="w-4 h-4 text-gray-700" />
+                    </button>
+                  </div>
+                </div>
+                <div className="mt-6 px-4">
+                  <div className="max-w-2xl mx-auto text-center">
+                    <p className="text-sm font-semibold text-[#000000] mb-4 leading-relaxed">
+                      {videos[currentSlide].quote}
+                    </p>
+                    <p className="text-xs text-[#000000] leading-6">
+                      {videos[currentSlide].description}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="mt-6 text-center px-2">
-                <p className="text-sm font-semibold text-[#000000] mb-3">
-                  {videos[getNextIndex()].quote}
-                </p>
-                <p className="text-xs text-[#000000] leading-6">
-                  {videos[getNextIndex()].description}
-                </p>
+
+              {/* Next Video */}
+              <div className="w-[550px] h-full flex-shrink-0 opacity-60 transform translate-x-15 flex flex-col justify-center">
+                <h2 className="text-xl font-normal text-gray-500 mb-6 text-center whitespace-nowrap overflow-hidden text-ellipsis">
+                  {videos[getNextIndex()].title}
+                </h2>
+                <div className="relative w-full h-72 rounded-xl overflow-hidden border-2 border-gray-100 shadow-xl">
+                  <div className="p-2 w-full h-full bg-gray-100 rounded-xl">
+                    <iframe
+                      src={getYouTubeEmbedUrl(videos[getNextIndex()].id)}
+                      className="w-full h-full rounded-xl"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+                <div className="mt-6 text-center px-2">
+                  <p className="text-sm font-semibold text-[#000000] mb-3">
+                    {videos[getNextIndex()].quote}
+                  </p>
+                  <p className="text-xs text-[#000000] leading-6">
+                    {videos[getNextIndex()].description}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
