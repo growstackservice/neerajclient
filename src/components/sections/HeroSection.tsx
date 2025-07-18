@@ -5,6 +5,8 @@ import { ArrowUpRight } from "lucide-react";
 const HeroSection = () => {
   const handleScheduleCall = () => {
     console.log('Schedule call clicked');
+     window.open('https://calendly.com/neerja-1/discovery-session', '_blank');
+
   };
 
   return (

@@ -8,11 +8,13 @@ const Header = () => {
   const handleContactClick = () => {
     // Add contact logic here
     console.log('Contact clicked');
+    window.open('LinkedIn.com/in/neerjaarorabhatia', '_blank');
+
   };
 
   const handleLinkedInClick = () => {
     // Add LinkedIn navigation logic here
-    window.open('https://linkedin.com', '_blank');
+    window.open('https://LinkedIn.com/in/neerjaarorabhatia', '_blank');
   };
 
   return (

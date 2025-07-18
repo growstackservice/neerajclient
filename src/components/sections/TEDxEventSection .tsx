@@ -6,7 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 const TEDxEventSection = () => {
   const handleReserveSeat = () => {
     // Add your reservation logic here
-    console.log('Reserve seat clicked');
+     window.open('https://lu.ma/onkmedmq?tk=GDKp4y', '_blank');
   };
 
   return (
