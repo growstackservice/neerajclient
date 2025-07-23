@@ -13,6 +13,14 @@ interface Video {
 const VideoCarousel: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
 
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % videos.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + videos.length) % videos.length);
+  };
+  // Add the new video to the videos array
   const videos: Video[] = [
     {
       id: "HD-0_-QQHFg",
@@ -37,15 +45,14 @@ const VideoCarousel: React.FC = () => {
         "Unlock your inner greatness. What if you could bring more clarity in your life? One tool...",
       quote: '"The Art of Resilience, Unlocking the extraordinary within"',
     },
+    {
+      id: "IPUFF9EkxB8",
+      title: "The Art of Resilience - Neerja Arora",
+      description:
+        "Discover insights and inspiration from Neerja Arora on the Art of Resilience. Learn how to unlock your inner strength and navigate life's challenges with grace.",
+      quote: '"Resilience is not about bouncing back, it’s about bouncing forward."',
+    },
   ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % videos.length);
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + videos.length) % videos.length);
-  };
 
   const getYouTubeEmbedUrl = (videoId: string): string =>
     `https://www.youtube.com/embed/${videoId}`;

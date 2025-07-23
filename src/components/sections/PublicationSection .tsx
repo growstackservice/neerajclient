@@ -5,8 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const PublicationSection = () => {
   const handleClaimBook = () => {
-    // Add your book claiming logic here
-    console.log('Claim book clicked');
+    window.open('https://www.amazon.com/Resilience-Unlocking-Power-Natural-Intelligence/dp/0979226929/ref=sr_1_1?crid=15RGD7DTGWT5A&dib=eyJ2IjoiMSJ9.axM1iH3ow200OAV0ufnu5E6G51rfFGJH8qn-NBt_eFIx1sxYu9B1mRndPkfs1d0mdwAHTD05H7qrF3jmlf0t3SI_C_jj7MjE3C1xZp1d1NY.4AddbYC5-34-Bz2TN_0MXTFqSIlwN0HT6D68tXiBe4A&dib_tag=se&keywords=art+of+resilience+neerja&qid=1752853662&sprefix=art+of+resilience+neerja%2Caps%2C155&sr=8-1', '_blank');
   };
 
   return (
