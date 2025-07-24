@@ -39,7 +39,7 @@ export default function ContactForm() {
  
   return (
     <> 
-      <div className="bg-white flex justify-center items-center min-h-[80vh] sm:min-h-screen p-4 font-dm-sans" >
+      <div id="contact-section" className="bg-white flex justify-center items-center min-h-[80vh] sm:min-h-screen p-4 font-dm-sans" >
         <main className="flex flex-col md:flex-row gap-8 sm:gap-12 max-w-6xl w-full">
           <section className="bg-gradient-to-r from-[#F6F3FF] via-[#F9F7FF] to-[#F3F0FF] rounded-2xl p-6 sm:p-10 md:p-14 flex-1 max-w-lg">
             <h2 className="text-center text-2xl sm:text-3xl md:text-3xl font-semibold mb-4 leading-tight">

@@ -6,10 +6,10 @@ import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 const Header = () => {
   const handleContactClick = () => {
-    // Add contact logic here
-    console.log('Contact clicked');
-    // window.open('LinkedIn.com/in/neerjaarorabhatia', '_blank');
-
+    const contactSection = document.getElementById('contact-section');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleLinkedInClick = () => {
