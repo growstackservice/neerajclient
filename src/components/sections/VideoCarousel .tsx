@@ -23,14 +23,6 @@ const VideoCarousel: React.FC = () => {
   // Add the new video to the videos array
   const videos: Video[] = [
     {
-      id: "HD-0_-QQHFg",
-      title: "Bliss is in Knowing Yourself",
-      description:
-        "Unlocking it can unlock a powerful new state of being. It can reshape your mental, emotional, and mechanical habits and addictions to the present moment responses and personal...",
-      quote:
-        '"Guide for discovering human greatness where miracles become an everyday possibility"',
-    },
-    {
       id: "zIm4OFOSwvA",
       title: "Extraordinary",
       description:
@@ -72,7 +64,7 @@ const VideoCarousel: React.FC = () => {
       <div className="text-center mb-1">
         <div className="text-[#6433F6] text-[12px] font-semibold uppercase tracking-widest bg-white px-5 py-2 rounded-full inline-block mb-8 shadow-md border border-gray-200">
           <a
-            href="https://www.forbes.com/councils/forbescoachescouncil/2025/07/22/binary-thinking-shrinks-potential-neutrality-expands-it/"
+            href="https://www.forbes.com/councils/forbescoachescouncil/people/neerjabhatia/?utm_campaign=Forbes%20Author%20Page&utm_medium=email&_hsmi=72443562&utm_content=72443562&utm_source=hs_automation"
             target="_blank"
             rel="noopener noreferrer"
           >
