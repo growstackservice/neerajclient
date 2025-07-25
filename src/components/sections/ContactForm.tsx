@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
@@ -12,6 +12,16 @@ export default function ContactForm() {
     phone: '',
     message: ''
   });
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  useEffect(() => {
+    if (status === 'success' || status === 'error') {
+      const timer = setTimeout(() => {
+        setStatus('idle');
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,20 +31,33 @@ export default function ContactForm() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault(); // prevent page reload
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus('idle');
 
-    // For now, just log the form data
-    console.log(formData);
+    try {
+      const response = await fetch('/api/submit-to-sheet', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
-    // Optionally, clear the form
-    setFormData({ name: '', email: '', phone: '', message: '' });
+      if (response.ok) {
+        setStatus('success');
+        setFormData({ name: '', email: '', phone: '', message: '' });
+      } else {
+        setStatus('error');
+      }
+    } catch (error) {
+      console.error(error);
+      setStatus('error');
+    }
   };
   
 
   const handleLinkedInClick = () => {
     // Add LinkedIn navigation logic here
-    window.open('https://linkedin.com', '_blank');
+    window.open('https://LinkedIn.com/in/neerjaarorabhatia', '_blank');
   }
  
   return (
@@ -115,6 +138,12 @@ export default function ContactForm() {
               >
                 Send message
               </button>
+              {status === 'success' && (
+                <p className="text-green-600 text-xs mt-2 px-20">Thank you! Your message has been sent.</p>
+              )}
+              {status === 'error' && (
+                <p className="text-red-600 text-xs mt-2 px-20">Sorry, there was a problem sending your message. Please try again.</p>
+              )}
             </form>
           </section>
 

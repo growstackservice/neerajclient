@@ -63,9 +63,21 @@ const VideoCarousel: React.FC = () => {
   return (
     <div className="w-full bg-white pt-2 py-8 mb-0">
       {/* Header */}
-      <div className="text-center mb-2">
-        <div className="text-[#6433F6] text-[12px] font-semibold uppercase tracking-widest bg-white px-5 py-2 rounded-full inline-block mb-8 shadow-md border border-gray-200">
+      <div className="text-center mb-1">
+        <div className="text-[#6433F6] text-[12px] font-semibold uppercase tracking-widest bg-white px-5 py-2 rounded-full inline-block mb-4 shadow-md border border-gray-200">
           BLOGS/VIDEOS
+        </div>
+      </div>
+
+      <div className="text-center mb-1">
+        <div className="text-[#6433F6] text-[12px] font-semibold uppercase tracking-widest bg-white px-5 py-2 rounded-full inline-block mb-8 shadow-md border border-gray-200">
+          <a
+            href="https://www.forbes.com/councils/forbescoachescouncil/2025/07/22/binary-thinking-shrinks-potential-neutrality-expands-it/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Featured: Forbes Article by Neerja Bhatia
+          </a>
         </div>
       </div>
 
@@ -84,7 +96,7 @@ const VideoCarousel: React.FC = () => {
                 allowFullScreen
               ></iframe>
             </div>
-            
+
             {/* Mobile Navigation buttons */}
             <button
               onClick={prevSlide}
@@ -103,7 +115,7 @@ const VideoCarousel: React.FC = () => {
             >
               <ChevronRight className="w-5 h-5 text-gray-700" />
             </button>
-            
+
             <div className="mt-4 text-center px-2">
               <p className="text-sm font-semibold text-[#000000] mb-2">
                 {videos[currentSlide].quote}
@@ -113,16 +125,15 @@ const VideoCarousel: React.FC = () => {
               </p>
             </div>
           </div>
-          
+
           {/* Mobile Slide indicators */}
           <div className="flex justify-center mt-4 space-x-2">
             {videos.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                  index === currentSlide ? 'bg-[#6433F6]' : 'bg-gray-300'
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-200 ${index === currentSlide ? 'bg-[#6433F6]' : 'bg-gray-300'
+                  }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
